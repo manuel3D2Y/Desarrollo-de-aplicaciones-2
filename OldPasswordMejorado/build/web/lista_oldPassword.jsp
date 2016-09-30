@@ -1,0 +1,43 @@
+<%-- 
+    Document   : lista_estudiantes
+    Created on : 20/09/2016, 12:29:24 PM
+    Author     : Irbing
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Lista "Old Passwords"</title>
+    </head>
+    <body>
+        <table>
+            <thead> 
+            <tr>
+                <th>id Pasword </th>
+                <th>Password </th>
+                <th>Changed </th>
+            </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="oldPassword" items="${oldPasswords}">
+                    <tr>
+                        <td>${oldPassword.idPassword}</td>
+                        <td>${oldPassword.password}</td>
+                        <td>${oldPassword.changed}</td>
+                        <td><a href="OldPasswordController?action=cambiar&idPassword=${oldPassword.idPassword}">Cambiar</a></td>
+                        <td><a href="OldPasswordController?action=borrar&idPassword=${oldPassword.idPassword}">Borrar</a></td>
+                    </tr>                    
+                </c:forEach>
+            </tbody>
+            
+        </table>
+        <p>
+            <a href="OldPasswordController?action=agregar">
+                Agregar 
+            </a>
+        </p>
+    </body>
+</html>
