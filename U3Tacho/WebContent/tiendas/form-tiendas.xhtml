@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#{str.tiendaFormTitle}</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="contenido">
+			<h2>#{str.tiendaFormHeader}</h2>
+			<p:fieldset legend="#{str.tiendaLegendForm}">
+				<h:form>
+					<h:panelGrid columns="5">
+					
+						<p:inputText placeholder="#{str.tiendaNombrePrompt}"
+							value="#{tiendaBean.tienda.nombre}" 
+							style="padding-top:0px; height:24px" ></p:inputText>
+						<p:inputText placeholder="#{str.tiendaEstadoPrompt}"
+							value="#{tiendaBean.tienda.estado}" 
+							style="padding-top:0px; height:24px" ></p:inputText>
+							<p:inputText placeholder="#{str.tiendaPaisPrompt}"
+							value="#{tiendaBean.tienda.pais}" 
+							style="padding-top:0px; height:24px" ></p:inputText>
+						<p:inputText placeholder="#{str.tiendaCodigoPostalPrompt}"
+							value="#{tiendaBean.tienda.codigoPostal}" 
+							style="padding-top:0px; height:24px" ></p:inputText>
+						
+						
+						<p:selectOneMenu value="#{tiendaBean.tienda.contador.id}" style="height:29px">
+							<f:selectItems value="#{tiendaBean.contadores}" var="a"
+								itemLabel="#{a.nombre}" itemValue="#{a.id}"></f:selectItems>
+						</p:selectOneMenu>
+						
+						</h:panelGrid>
+						<p:commandButton value="#{str.buttonSave}"
+							action="#{tiendaBean.guardar()}"></p:commandButton>
+						<p:commandButton value="#{str.buttonDelete}"
+							action="#{tiendaBean.eliminar()}"></p:commandButton>
+						<p:commandButton value="#{str.buttonCancel}"
+							action="#{tiendaBean.cancelar()}"></p:commandButton>
+					
+				</h:form>
+			</p:fieldset>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

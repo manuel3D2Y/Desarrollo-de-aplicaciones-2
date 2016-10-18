@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#{str.contadorListTitle}</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="contenido">
+			<h2>#{str.contadorListTitle}</h2>
+			<h:form>
+				<p:commandButton value="#{str.buttonAdd}"
+					action="#{contadorBean.agregar()}"></p:commandButton>
+			</h:form>
+			<p:dataTable value="#{contadorBean.contadores}" var="g">
+				<p:column headerText="#{str.action}">
+				<h:form>
+					<h:commandButton value="#{str.buttonEdit}"
+						action="#{contadorBean.editar(g)}"></h:commandButton>
+					</h:form>
+				</p:column>
+				
+				<p:column headerText="#{str.contadorNombreHeader}">
+					<p:outputLabel value="#{g.nombre}"></p:outputLabel>
+				</p:column>
+
+				<p:column headerText="#{str.contadorApellidoHeader}">
+					<p:outputLabel value="#{g.apellido}"></p:outputLabel>
+				</p:column>
+				
+				<p:column headerText="#{str.contadorEdadHeader}">
+					<p:outputLabel value="#{g.edad}"></p:outputLabel>
+				</p:column>
+				
+				
+				<p:column headerText="#{str.contadorNacionalidadHeader}">
+					<p:outputLabel value="#{g.nacionalidad}"></p:outputLabel>
+				</p:column>
+				
+			</p:dataTable>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#{str.systemTitle}</title>
+	<f:event listener="#{plantillaBean.checkLogin()}" type="preRenderView"></f:event>
+</h:head>
+<h:body>
+	<div id="page">
+		<div id="header">
+			<h1>#{str.systemTitle}</h1>
+		</div>
+		<div id="menu">
+			<h:form>
+				<p:menubar>
+					<p:menuitem value="#{str.home}" action="Inicio"></p:menuitem>
+					<p:menuitem value="#{str.users}" action="#{usuarioBean.listar()}"></p:menuitem>
+					<p:menuitem value="#{str.roles}" action="#{rolBean.listar()}"></p:menuitem>			
+					<p:menuitem value="#{str.modules}" action="#{moduloBean.listar()}"></p:menuitem>
+					<p:menuitem value="#{str.contador}" action="#{contadorBean.listar()}"></p:menuitem>
+					<p:menuitem value="#{str.tienda}" action="#{tiendaBean.listar()}"></p:menuitem>											
+				
+				</p:menubar>
+			</h:form>
+		</div>
+		<div id="contenido">
+			<ui:insert name="contenido">
+				<h2>#{str.systemWelcome}</h2>
+			</ui:insert>
+		</div>
+		<div id="pie">
+			<p><strong>#{str.developer}</strong> #{str.myName}</p>
+		</div>
+	</div>
+</h:body>
+</html>

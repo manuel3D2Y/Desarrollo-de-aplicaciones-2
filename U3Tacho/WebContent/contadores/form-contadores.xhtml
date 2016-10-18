@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#{str.contadorFormTitle}</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="contenido">
+			<h2>#{str.contadorFormHeader}</h2>
+			<p:fieldset legend="#{str.contadorLegendForm}">
+				<h:form>
+					<h:panelGrid columns="1">
+						<p:inputText placeholder="#{str.contadorNombrePrompt}"
+							value="#{contadorBean.contador.nombre}"></p:inputText>
+
+						<p:inputText placeholder="#{str.contadorApellidoPrompt}"
+							value="#{contadorBean.contador.apellido}"></p:inputText>
+						<p:inputText placeholder="#{str.contadorEdadPrompt}"
+							value="#{contadorBean.contador.edad}"></p:inputText>
+						
+						<p:inputText placeholder="#{str.contadorNacionalidadPrompt}"
+							value="#{contadorBean.contador.nacionalidad}"></p:inputText>
+
+					</h:panelGrid>
+					<p:commandButton value="#{str.buttonSave}"
+						action="#{contadorBean.guardar()}"></p:commandButton>
+					<p:commandButton value="#{str.buttonDelete}"
+						action="#{contadorBean.eliminar()}"></p:commandButton>
+					<p:commandButton value="#{str.buttonCancel}"
+						action="#{contadorBean.cancelar()}"></p:commandButton>
+				</h:form>
+			</p:fieldset>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
