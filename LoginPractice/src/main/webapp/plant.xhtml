@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+
+	<h1>Plant</h1>
+	<h:form id="frmPlant">
+			Name: <h:inputText value="#{plantController.plant.name}" />
+			
+			Color: <h:inputText value="#{plantController.plant.color}" />
+			
+
+		<h:commandButton action="#{plantController.save}" value="Save">
+
+			<f:ajax execute="frmPlant" render="frmPlant" />
+		</h:commandButton>
+		<h:commandButton rendered="#{plantController.editMode}"
+			action="#{plantController.save}" value="Cancel">
+			<f:ajax render="frmPlant"></f:ajax>
+		</h:commandButton>
+
+		<h:dataTable value="#{plantController.plants}" var="p"
+			id="dtPlant">
+			<h:column>
+				<f:facet name="header">Id</f:facet>#{p.id}</h:column>
+			<h:column>
+				<f:facet name="header">Name</f:facet>#{p.name}</h:column>
+		
+			<h:column>
+				<f:facet name="header">Color</f:facet>#{p.color}</h:column>
+
+
+			<h:column>
+				<f:facet name="header">Actions</f:facet>
+				<h:commandButton action="#{plantController.delete(p)}"
+					value="Delete"
+					onclick="return window.confirm
+				('Are you sure?')">
+					<f:ajax render="frmPlant:dtPlant" />
+				</h:commandButton>
+				<h:commandButton action="#{plantController.update(p)}"
+					value="Update">
+
+					<f:ajax render="frmPlant" />
+				</h:commandButton>
+
+			</h:column>
+
+		</h:dataTable>
+	</h:form>
+</body>
+</html>
